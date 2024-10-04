@@ -14,8 +14,8 @@ const ToDoActiveTask = ({todos,markasCompleted,deleteTodos}) => {
                                 <span className='task-date'>{todo.date}</span>
                             </div>
                             <div className='action-icons'>
-                                <span className='material-icons' onClick={() => markasCompleted(index)}>check_circle</span>
-                                <span className='material-icons' onClick={() => deleteTodos(index)}>delete</span>
+                                <span className='material-icons' onClick={() => markasCompleted(todo.id)}>check_circle</span>
+                                <span className='material-icons' onClick={() => deleteTodos(todo.id)}>delete</span>
                             </div>
                         </li>
                     ))

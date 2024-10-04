@@ -15,7 +15,7 @@ const ToDoCompletedTask = ({todos,deleteTodos}) => {
                             </div>
                             <div className='action-icons'>
                                 <span className='material-icons' style={{color:"#888"}}>check_circle</span>
-                                <span className='material-icons' onClick={ () => deleteTodos(index)}>delete</span>
+                                <span className='material-icons' onClick={ () => deleteTodos(todo.id)}>delete</span>
                             </div>
                         </li>
                     ))

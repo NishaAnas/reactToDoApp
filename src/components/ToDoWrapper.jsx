@@ -1,4 +1,5 @@
 import React from "react";
+import { v4 as uuid4 } from "uuid";
 import ToDoForms from "./ToDoForms";
 import ToDoActiveTask from "./ToDoActiveTask";
 import ToDoCompletedTask from "./ToDoCompletedTask";
@@ -9,6 +10,7 @@ const ToDowrapper = ({todos,setTodos}) =>{
     const addTodos =(inputValue) =>{
         if(inputValue.trim()){
             const newTodo={
+                id:uuid4(),
                 text:inputValue,
                 completed:false,
                 date:new Date().toLocaleString()
@@ -18,18 +20,19 @@ const ToDowrapper = ({todos,setTodos}) =>{
     }
 
     //Mark as Completed
-    const markasCompleted = (index) => {
-        const newTodo = todos.map((todo,i) => (
-            i===index ? {...todo , completed:true} : todo
+    const markasCompleted = (id) => {
+        const newTodo = todos.map(todo => (
+            todo.id===id ? {...todo , completed:true} : todo
         ))
         setTodos(newTodo)
     }
 
     //delete todos
-    const deleteTodos = (index) =>{
-        const newTodo = todos.filter((_,i) => i !== index)
+    const deleteTodos = (id) =>{
+        const newTodo = todos.filter( todo => todo.id !== id)
         setTodos(newTodo)
     }
+    
     return (
         <div>
             <ToDoForms addTodos={addTodos}/>
